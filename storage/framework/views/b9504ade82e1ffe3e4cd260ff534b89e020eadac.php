@@ -1,0 +1,1 @@
+<?php /**PATH G:\nxtGIO projects\EWDP\LMS_Web\Library_Management_System\resources\views/Register_Login/auth/EnterNewPassword.blade.php ENDPATH**/ ?>

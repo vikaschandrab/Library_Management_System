@@ -39,7 +39,7 @@
                     <div class="form-check">
 
                     </div>
-                    <a href="forgotpwd.html" class="auth-link text-black">Forgot password?</a>
+                    <a href="/forgotpassword" class="auth-link text-black">Forgot password?</a>
                   </div>
 
                   <div class="text-center mt-4 font-weight-light"> Don't have an account? <a href="/register" class="text-primary">Create</a>

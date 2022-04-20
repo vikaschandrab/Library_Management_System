@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\LibrarianController;
 use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\Authentication\Forgotpassword;
 use App\Http\Controllers\Authentication\RegistrationController;
 use App\Http\Controllers\Librarian\BooksController as LibrarianBooksController;
 use App\Http\Controllers\Librarian\BooksDueController;
@@ -31,6 +32,11 @@ use App\Http\Controllers\Student\ProfileController as StudentProfileController;
 Route::get('/', function () {
     return view('auth.login');
 });
+
+Route::get('/forgotpassword',[Forgotpassword::class,'forgotPassword']);
+Route::get('/requestOTP',[Forgotpassword::class,'RequestOTP']);
+Route::get('/verifyOTP',[Forgotpassword::class,'VerifyOTP']);
+Route::get('/NewPass',[Forgotpassword::class,'EnterNewPassword']);
 
 Auth::routes(
     ['register' => false,

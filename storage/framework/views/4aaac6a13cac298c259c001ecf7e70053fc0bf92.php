@@ -40,33 +40,41 @@
               <div class="auth-form-light text-left p-5">
                 <h4 style="text-align: center;">Library Management System</h4>
                 <form class="pt-3" method="GET" name="EnterEmail" id="EnterEmail" enctype="multipart/form-data">
-                    {{ csrf_field() }}
+                    <?php echo e(csrf_field()); ?>
+
                     <h6 class="font-weight-bold" style="text-align: center;">Forgot Password</h6>
                     <div class="form-group">
-                        <input type="email" class="form-control form-control-lg @error('email') is-invalid @enderror" id="email" name="email" placeholder="Enter Valid Email" value="{{ old('email') }}" required autocomplete="off" autofocus>
-                        @error('email')
+                        <input type="email" class="form-control form-control-lg <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> is-invalid <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>" id="email" name="email" placeholder="Enter Valid Email" value="<?php echo e(old('email')); ?>" required autocomplete="off" autofocus>
+                        <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
+                                <strong><?php echo e($message); ?></strong>
                             </span>
-                        @enderror
+                        <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                     </div>
-                    {{-- <div class="form-group">
-                        <input type="text" class="form-control form-control-lg @error('OTP') is-invalid @enderror" id="exampleInputEmail1" placeholder="Enter OTP" name="OTP" readonly autocomplete="off">
-                        @error('OTP')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div> --}}
+                    
                     <div class="mt-3">
                         <button class="btn btn-block btn-gradient-primary btn-lg font-weight-medium auth-form-btn" type=submit name="submit" id="submit" value="submit">Request OTP</button>
                     </div>
                 </form>
                 <div id="Enter_Otp">
-                    @include('Register_Login.EnterOTP')
+                    <?php echo $__env->make('Register_Login.EnterOTP', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 </div>
                 <div id="Enter_new_Password">
-                    @include('Register_Login.EnterNewPassword')
+                    <?php echo $__env->make('Register_Login.EnterNewPassword', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 </div>
               </div>
             </div>
@@ -99,13 +107,13 @@
     </script>
 
     <script>
-        @if (session('status'))
+        <?php if(session('status')): ?>
             swal({
-                title: ' {{ session('status') }}',
+                title: ' <?php echo e(session('status')); ?>',
                 icon: "error",
                 button: "Done",
             });
-        @endif
+        <?php endif; ?>
     </script>
 
     <script>
@@ -250,3 +258,4 @@
        </script>
   </body>
 </html>
+<?php /**PATH G:\nxtGIO projects\EWDP\LMS_Web\Library_Management_System\resources\views/Register_Login/forgotpwd.blade.php ENDPATH**/ ?>
